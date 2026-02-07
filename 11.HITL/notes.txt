@@ -1,0 +1,62 @@
+What is HITL?
+HITL (Human-in-the-Loop) is a design approach in AI systems where a human actively
+participates at critical points of the AI workflow — either to supervise, approve, correct,
+or guide the model’s output.
+
+Think of HITL as putting a human “checkpoint” inside an AI pipeline so that important
+decisions are not made autonomously by the model.
+
+Why HITL Exists?
+(i)To help agentic systems
+(ii)To add accountability
+
+HITL ensures:
+(i)Accuracy
+(ii)Safety
+(iii)Ethical alignment
+(iv)Better user experience
+
+Common HITL Patterns:
+(i)  Action Approval Pattern (Approve / Reject Before Execution).
+(ii) Output Review / Edit Pattern.
+(iii)Ambiguity Clarification Pattern.
+(iv) Escalation Pattern. 
+
+How Implemented ?
+(i) interrupt() → pauses the graph and waits for human input.
+(ii) Command() → resumes the graph with human-provided state updates.
+
+common code structure we can follow ?
+Example 1: Simple Approval
+interrupt({
+    "type": "approval",
+    "message": "Approve this action?",
+    "content": state["ai_output"]
+})
+
+
+Example 2: Review + Edit
+interrupt({
+    "type": "review",
+    "ai_output": state["ai_output"],
+    "allowed_actions": ["approve", "edit", "reject"],
+    "instructions": "Edit if incorrect, otherwise approve"
+})
+
+Example 3: Tool Execution Approval
+
+interrupt({
+    "type": "tool_confirmation",
+    "tool": "delete_user_files",
+    "arguments": {"path": "/data"},
+    "risk": "HIGH"
+})
+
+
+"content": state["ai_output"] do?
+👉 It packages the AI output
+👉 and sends it to the human via interrupt()
+
+Think of it as:
+“Here is what the AI wants to do — please review it.”
+
