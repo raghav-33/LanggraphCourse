@@ -1,0 +1,35 @@
+'''
+Tools : Adding External Tool like Gmail , Duck Duck Go , calculator so LLM can perform action 
+using it , when llm think i need to use tool acc to user query.
+
+For Detailed Tool Intro: Watch Langchain Video 16 (Tools)
+
+We want LLM which can perform both Genral Task and Actions
+so we our LLM need to understand from user query whether to user is demanding Action or genral chatting
+
+GENRAL LLM WORKFLOW                  TOOLS BASED LLM WORKFLOW
+Start                                   start
+ |                                        |
+ |                                        |
+ |                                        |
+Chat_Node                               Chat_Node  // WE NEED DECISION MAKING HERE TO DECIDE GENRAL CHATTING OR TOOL CALLING
+ |                                       |    \
+ |                                       |     |
+ |                                       |     |
+ End                                     |    Tools
+                                         |      \
+                                         |       |
+                                         |       |
+                                         \       /
+                                          \     /
+                                            END
+
+// WE NEED {DECISION MAKING} AT {Chat_Node} IN TOOL BASED LLM TO DECIDE GENRAL CHATTING OR TOOL CALLING
+Concept Come Here is {Tool Node}
+> Tool Node : is special kind of Node where we store all tool which need to integrate with genral LLM 
+           (ii) Specaility of Tool Node is it automatically decide which tool to call
+
+> Tools Condition : is prebuilt function in langgraph , which is Used in {Chat_Node} and decide automatically from user query to do chatting or tool calling.
+
+// For formal Definitions : see notebook
+'''
