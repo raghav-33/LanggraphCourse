@@ -1,0 +1,3 @@
+In Langgraph LTM concept is implemented with Memory base store which is abstract class
+It allow us to create Memory, search|edit|delete Existing Memory
+there are 3 inherited class from it are (i) InmemorySaver (ii) PostgreeStore (iii)ReddisStore
