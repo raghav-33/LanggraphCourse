@@ -1,0 +1,59 @@
+Memory in LLM's
+
+A LLm at inference is just a parameterized Math Function (O/p not depend only on i/p but also on paramters)
+y = fθ(x)
+where:
+y : o/p
+x: input tokens (prompt)
+θ : Billions of paramter (Therfore we say Our gpt has 2 billion parametr)
+
+But this parameterized Math Functions are "Stateless"
+Stateless: system is Stateless if o/p depend only on current i/p and not on anything that happend before.
+
+ThereFore Fact is Concluded : LLM's do not have any intrinsic Memory.
+
+
+ ✓ Context Window : is Amount of text an LLm can read and remember at one time before answering.
+                    it is Maximum No of Token LLM's can processed before answering.
+                    Now' day LLM have 128k token Context Window.
+
+    LLM's use its parameter to knowledge answer, people assume but newly discovered:
+ ✓ In Context Learning :In-context learning is an emergent ability that allows an LLM to use information and patterns present in the prompt itself,
+                     in addition to its trained parametric knowledge, to generate an answer.
+    y = fθ(concation(x1, x2....xn)) // internally it work as Memory , not Stateless , but if refresh memory vanish --> this is SHORT TERM MEMORY.
+
+
+✓ Short Term Memory
+    Also Known as Conversation Buffer
+    How Implemented ? y = fθ(concation(x1, x2....xn)) : Every chat is appending with previous messages
+    Drawback: 
+    (i)  But if refresh page/ code reset/ start new Conversation memory of previous Conversation is vanish --> Solution : use persistance --> this is SHORT TERM MEMORY is Fragile.
+    (ii) Context Window Problem : if our conversations chat/messages become too large due to lots of messages , 
+         while tokenizing  previous conversations messages at new query token size also become large and 
+         eventually it cross context limit of llm (llm not able to process new query in this case).
+         Solution:(i) Trimming : decide send only n messages instead of entire.problem: May miss Context  : Solution -->  send remaining messages to another LLM to generate summary
+    (iii) Short Term Memory is Thread Scoped (Different Conversations limited)
+    NOTE: In chatGpt(LLM) in every Conversation(also known thread) Short term memory is Implemented
+   
+     ThereFore we need new kind of memory which exist out of single conversation for long term of time.
+
+✓ Long Term Memory
+memory which exist out of single conversation for long term of time.
+Three Types :
+(i) Episodic Memory : What Happend : remeber/store What happend in past
+(ii) Semantic Memory : What is True : made up of facts about user , system .
+(iii) Procedural Memory : How to do Things : remember How to do task. 
+
+How it Work ?
+Step 1 : Creation / update : In this we have to find out,is there anything which can become part of long term memory.(exist out of Conversation)
+Step 2 : Storage : Here Store Long term Memory Extract out from step 1 and add identifiers and metadata to it making it survive restart and crashes
+step 3 : RetrivaL : In new Conversation , model sochta hai , mujhe yeh answer krne kai liye kisi type ki memory ki jarurt hai ?
+step 4 : Injection : we did'nt do LTM direct Interact with LLM    
+                     we basically LTM sai search krke STM mai laker aa tai hai fir context window ka part bnata hai then send to LLM
+                     LTM-->Search-->STM-->Context-->LLM   
+    NOTE : In Injection we basically Pull Out things from LTM and bring into STM.
+
+Challeges ?
+(i) Deciding what is worth remembering
+(ii) Retrieving the right memory at the right time
+(iii) Orchestrating the entire system.
