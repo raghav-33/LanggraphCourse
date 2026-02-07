@@ -1,0 +1,63 @@
+persistance
+store the state of workflow in things like DBs,RAM etc.
+not store only final values but also intermediate values (value at every node)
+suppose our workflow crash at node 3 ,but due to it next time we can resume converstion from where it crashes : FAULT TOLERANCE.
+chatgpt like working start new chat or continue previous chat.
+
+
+CHECKPOINTERS
+langgraph mai jo persistance ka concept implement hoya hai vo checkponter kai help sai hoya hai.
+
+divide the graph nodes into checkpoints --> checkpoints
+
+checkpointers graph kai execution ko checkpoints mai divide kar daita hai fir , har checkpoints pai state ki jo value hai usko store krta jata hai
+
+checkpoint kaise decide hote hai ?
+Har Superstep ek checkpoint hai ,
+har checkpoint pai state ki value ko save krta hai
+
+
+## Streaming
+What problem exist before it ?
+
+suppose when you give {short content generation} prompt to LLM like "what is capital of india?"
+Answer(response) is genearted  very fast ,at blink of time like 0.01 secs.
+
+But When You give {Very Long Content generation Prompt} like "Generate a 1000 word essay on capitals"
+Answer(response) is genearted after long time and at {all/complete pharagraph at once}(ikatha)
+
+This make User experince bad , User have to wait for 1-2 min
+
+But in Chat Gpt response is genearted word by word(token by token)
+even if content is long , so user feel that he was not waiting and seem user friendely
+
+That's TypeWriter Effect is called Streaming.
+
+Definition : Streaming in LangGraph is the ability to emit intermediate node outputs and state updates in real time while the graph executes, instead of waiting for the final result.
+           (ii) In LLMs, streaming means Model start sending tokens(words) as soon as they're genearted,
+                instead of waiting for the entire response to be ready before returing it.
+
+Why Streaming ?
+ 
+1. Faster response time – low drop-off rates
+2. More human-like conversation (builds trust, feels alive, and keeps the user engaged)
+3. Important for multi-modal UIs
+4. Better UX for long output such as code
+5. You can cancel midway, saving tokens
+6. You can interleave UI updates, e.g., show “thinking…”, show tool results
+
+----------------------------------------------
+| Feature         | invoke()   | stream()     |
+| --------------- | ---------- | ------------ |
+| Output          | Final only | Step-by-step |
+| Debugging       | Hard       | Easy         |
+| UI friendliness | Poor       | Excellent    |
+| Long workflows  | Blocking   | Progressive  |
+----------------------------------------------
+
+Now 
+graph.invoke() [x] : Return Dictionary |  Final output only
+graph.stream() (✔) : Return Generator  |  intermediate output
+                    
+                    Generator : special type of iterator that allow you to generate values on fly
+                                one at time , using yield keyword instead of return statemnet.
