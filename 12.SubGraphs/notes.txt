@@ -1,0 +1,35 @@
+Subgraph Become Very imp concept if we want to build multi agent system.
+
+what are Multi agent system?
+system where Multiple agent are link in graph through nodes and edges.
+
+What is Subgraph ?
+A Subgraph in Langraph Usually means Graphh that is embedded and executed as node inside another Graphh
+
+Why needed?
+User -> LLM -> Output
+
+Gen Ai LLMs can be Very complex it can contain lots of Modulue like.
+Tool calls
+RAG
+Conditional routing
+Retries
+Memory
+HITL
+Evaluation
+Guardrails
+
+What benfit give ?
+(i) Modularity : Entire piece of code break into smaller pieces of code
+(ii) resuability : reuse subgraph in another graph also.
+(iii) Maintainability : increases.
+
+(iv) Failure isolation : if one subgraph fail another work with warnings
+(v) state seperation : differnet subgraph will have differnet / seperate state
+(vi) Observability : trace seperately every agent / subgraph.
+ 
+way to implement subgraph in langgraph ?
+(i) Invoke graph from node : [There is no direct connection b/w both 2 graphs] invoking subgraph from parent graph kai node sai {Both graphs have seperate States}
+(ii) Add a Graph as node:  There is  direct connection b/w both 2 graphs] , instead of invoking from parent graph node , directly invoking. {Both graphs have same States}
+
+
