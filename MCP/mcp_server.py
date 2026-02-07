@@ -1,0 +1,45 @@
+# This is MCP server code file 
+# No need to study it , only study mcp Client code file(i.e : mcp)
+
+# arith_server.py
+from __future__ import annotations
+from fastmcp import FastMCP
+
+mcp = FastMCP("arith")
+
+def _as_number(x):
+    # Accept ints/floats or numeric strings; raise clean errors otherwise
+    if isinstance(x, (int, float)):
+        return float(x)
+    if isinstance(x, str):
+        return float(x.strip())
+    raise TypeError("Expected a number (int/float or numeric string)")
+
+@mcp.tool()
+async def add(a: float, b: float) -> float:
+    """Return a + b."""
+    return _as_number(a) + _as_number(b)
+
+@mcp.tool()
+async def subtract(a: float, b: float) -> float:
+    """Return a - b."""
+    return _as_number(a) - _as_number(b)
+
+@mcp.tool()
+async def multiply(a: float, b: float) -> float:
+    """Return a * b."""
+    return _as_number(a) * _as_number(b)
+
+@mcp.tool()
+async def divide(a: float, b: float) -> float:
+    """Return a / b. Raises on division by zero."""
+    a = _as_number(a)
+    b = _as_number(b)
+    if b == 0:
+        raise ZeroDivisionError("Division by zero")
+    return a / b
+
+@mcp.tool()
+async def power(a: float, b: float) -> float:
+    """Return a ** b."""
+    return _as_number(a) ** _as_number(b)

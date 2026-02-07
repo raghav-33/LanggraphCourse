@@ -1,0 +1,23 @@
+What is MCP?
+Mcp is improved versions of tools.
+It is better Way or standarized way to connect tools with LLMs.
+
+Problems of Tools
+(i)Our Manger want to integrate Chatbot With Github , so it can read Github repos and answer queries
+(ii)But we have 2 types of tool (i) prebuilt and (ii) Custom tools . for custom tool we have to write a code
+(iii)LangChain does not provide any prebuilt github integrate tool , so we have to write custom code which is very complex and integrate with api
+for this case , or code may break | fail at any time if api change or request limit exceed.
+(iv) Basiclly probelm is any changes take place in server side (github tool) affect Client side (LLM)
+(iv) This is Biggest Probelem With Tools and MCP Resolve this Problems
+
+What Problem MCP resolve ?
+Any changes take place on server side (github tool) does not affect Client side (LLM)
+if any change take place at server side we did not need to change any thing at client side.
+
+MCP Code Writing
+During Writing of MCP code we have to write code for 2 things 
+(i) for MCP server (ii) Mcp Client (used for communication with MCP server)
+
+But in LangChain we can write a code For Constructing MCP server
+
+
