@@ -1,0 +1,47 @@
+1. full rag is not tracing ,only chain part is tracing
+    LangSmith by deafult trace only Langchain Runnables (that part in which {invoke Function} is executing).
+
+    Now See code of file 3_rag_v2 (for tracbles) and file 3_rag_v2 (tracble + metadata)
+    what ' used ? Tracebles : with the help of tracebales we can trace any python function. and additional benfit also add metadata
+
+
+2. Every time when we user make a query , request entire RAG workflow re execute , each time pdf is loading , embeddibg created every time ans so on.
+  but acc to good enginerring principle : if once pdf is loaded , embedding is created and stored in vector dbs then this process should not 
+  reexecute every time.
+
+  Speed / latency problem
+
+  Now See code of file 3_rag_v4.
+
+#####################################################################################################
+Langchain+LangSmith vs Langgraph+LangSmith
+
+1. Langchain+LangSmith
+    In the langchain every function is not traced explicity , only that part of code is traced which is runnable(.invoke() function)
+    To explicitly Trace every function we uses TRACEBLAES , which trace Runnable and every function
+    first we define every function with tracebales then define wrapper which contain all function to trace implicilty
+    see code file  3_rag_v2.
+
+
+2.Langgraph+LangSmith
+   In the Langgraph every node which is function is traced implicilty.
+   not like langchain problem to trace explicilty
+
+
+   ############################################# 
+   Other Features of LangSmith
+
+   1. Till Now Discussed : Observability 
+    jab ham llm ko ek baar execeute karte hai tu {Trace} form hota hai . jisko ham trace kar sakte hai (jiske andar ham observe kar sakte hai har ek componenet kaise run hoya.)
+
+   2. Monitoring
+      ek din mai llm multiple time execute hota hai , hum uski average Observability dek sakhte hai jaise average latency , average token used etc.
+
+    3. Altering : Altering set kar sakte hai jaise latency greater than 7 hoti hai tu team ko alert krdo.
+    4. Evaluation
+    5. Prompt Experimentation
+    7. Dataset Creation and Annotataion
+    8. user feedback
+
+    observality : studying single trace
+    monitoring : studying multiples Traces
