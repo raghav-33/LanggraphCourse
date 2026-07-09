@@ -33,10 +33,12 @@ graph.add_edge("chat_node", END)
 
 chatbot = graph.compile(checkpointer=checkpointer)
 
+# code to Check Already How many Threads (prev Conversation) exist in DB , so show at frontend , when user open app after some days for chat
+# list() -> Function of checkpointers , provide all checkponits of all threads exist 
 def retrieve_all_threads():
     all_threads = set()
-    for checkpoint in checkpointer.list(None):
-        all_threads.add(checkpoint.config['configurable']['thread_id'])
+    for checkpoint in checkpointer.list(None): # List(None) : None : basically we did not wat checkpoints for particular thread id , we want for all
+        all_threads.add(checkpoint.config['configurable']['thread_id']) # structuring output for threads
 
     return list(all_threads)
 
