@@ -57,7 +57,7 @@ chatbot = graph.compile(checkpointer=checkpointer)
 stream =chatbot.stream(
     {'messages': [HumanMessage(content='what is recipie to make pasta')]},
     config = {'configurable' : {'thread_id':'thread-1'}},
-    stream_mode = 'messages'
+    stream_mode = 'messages'  # Note : There are Diff types of Stream_mode see in docs , but we using messages
 )
 
 print(type(stream))
