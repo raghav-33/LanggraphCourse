@@ -33,10 +33,10 @@ if user_input:
     ############## STREAMING CODE ##############################
     with st.chat_message('assitant'):
         ai_message=st.write_stream(  # st.write_stream() : Function provide by streamlit to showing TypeWriter | streaming Effect
-            # copy exactly same code of streaming from  backend and place here
+            # copy exactly same code of streaming from  backend and place here & now remove this code from backend
             # before this Simply , Invoke() function is used in both backend & frontend , now replace by streaming code. 
             message_chunk.content for message_chunk, metadata in chatbot.stream(
-                {'messages': [HumanMessage(content='what is recipie to make pasta')]},
+                {'messages': [HumanMessage(content=user_input)]},
                 config = {'configurable' : {'thread_id':'thread-1'}},
                 stream_mode= 'messages'
             )
