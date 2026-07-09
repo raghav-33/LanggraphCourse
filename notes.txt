@@ -1,8 +1,25 @@
 persistance
-Define : - Ability to save and restore the state of workflow over a time in things like DBs etc.
+Define : - Ability to save and restore the "state" of workflow over a time in things like DBs, text files , in ram  etc.
 not store only final values but also intermediate values (value at every node)
 suppose our workflow crash at node 3 ,but due to it next time we can resume converstion from where it crashes : FAULT TOLERANCE.
 chatgpt like working start new chat or continue previous chat.
+Persistence = Permanent storage → Available even after restart.
+Examples of Persistent Storage: SQLite Database, PostgreSQL, MySQL, MongoDB ,Redis (can be configured for persistence) , Files (TXT, JSON, CSV) , Vector Databases (Pinecone, Chroma, FAISS with disk persistence).
+Examples of Non-Persistent Storage : ram , graph state , memorySaver()
+Note : MemorySaver() is a checkpointer, but it is not persistent across application restarts, store in RAM not permanat (temprory persistance)
+       SQLite checkpointer, PostgreSQL checkpointer , Redis checkpointer (with persistence enabled) : provide persistance : permnant storage
+       In LangGraph, a checkpointer (such as SQLite or PostggreSQL) provides persistence by saving the graph state so it can be restored in future executions.
+
+
+# memorySaver() checkpoint discus previous -
+Suppose you compile your graph like this:
+graph = builder.compile(
+    checkpointer=MemorySaver()
+)
+The conversation is stored in MemorySaver.
+Conversation -> MemorySaver -> RAM
+If the program stops,everything disappears.
+This is temporary persistence (only while the application is running).
 
 
 CHECKPOINTERS
