@@ -2,6 +2,7 @@ from langgraph.graph import StateGraph, START, END
 from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_openai import ChatOpenAI
+# Import SqliteSaver Checkpointer instaed of InMemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
@@ -19,7 +20,9 @@ def chat_node(state: ChatState):
     response = llm.invoke(messages)
     return {"messages": [response]}
 
-conn = sqlite3.connect(database='chatbot.db', check_same_thread=False)
+# First Create Sqlite Database then Connect with it
+# if db Not exist before , then it was automatically created with name chatbot.db
+conn = sqlite3.connect(database='chatbot.db', check_same_thread=False) # check_same_thread=False : Sqlite Create in single Thread so it work in single thread in backend , but we will do work with multiple threads so to prevent error by deafult it is true
 # Checkpointer
 checkpointer = SqliteSaver(conn=conn)
 
