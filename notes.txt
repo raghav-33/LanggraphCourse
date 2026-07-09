@@ -1,5 +1,5 @@
 persistance
-store the state of workflow in things like DBs,RAM etc.
+Define : - Ability to save and restore the state of workflow over a time in things like DBs etc.
 not store only final values but also intermediate values (value at every node)
 suppose our workflow crash at node 3 ,but due to it next time we can resume converstion from where it crashes : FAULT TOLERANCE.
 chatgpt like working start new chat or continue previous chat.
