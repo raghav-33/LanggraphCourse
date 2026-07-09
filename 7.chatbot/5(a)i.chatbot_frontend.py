@@ -15,6 +15,7 @@ if 'message_history' not in st.session_state:
 
 # Loading Conversation History then start new conversation
 for message in st.session_state['message_history']:
+    # It make Chat Dialog box in chatbot with human avatar if role : user & robot avater if role : assitant
     with st.chat_message(message['role']):    ## This is PreBuilt Function in Streamlit help to make you Chatbot like interface 
         st.text(message['content'])
 
