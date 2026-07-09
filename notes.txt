@@ -21,6 +21,7 @@ Conversation -> MemorySaver -> RAM
 If the program stops,everything disappears.
 This is temporary persistence (only while the application is running).
 
+##########################################################################################################################################################################
 
 CHECKPOINTERS
 langgraph mai jo persistance ka concept implement hoya hai vo checkponter kai help sai hoya hai.
@@ -33,6 +34,14 @@ checkpoint kaise decide hote hai ?
 Har Superstep ek checkpoint hai ,
 har checkpoint pai state ki value ko save krta hai
 
+*** Formal definition 
+What is Checkpoints ?
+A checkpoint is a saved snapshot of a LangGraph's state at a particular point in execution. 
+
+What is Checkpointer 
+A checkpointer is the component responsible for saving, loading, and updating these checkpoints. Checkpointers enable conversation memory, fault recovery, and state persistence across graph executions.
+OR
+Component that saves and loads those checkpoints
 
 ## Streaming
 What problem exist before it ?
