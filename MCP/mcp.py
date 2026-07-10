@@ -82,7 +82,7 @@ async def build_graph():
 
 async def main():
     chatbot = await build_graph()
-    result = await chatbot.ainvoke({'messages':[HumanMessage(content ="what is stock price of apple")]})
+    result = await chatbot.ainvoke({'messages':[HumanMessage(content ="what is stock price of apple")]}) # .invoke() : not used , .ainvoke() : used (see 'a' before invoke)
     print(result['messages'][-1].content)
 
     if __name__ == '__main__':
