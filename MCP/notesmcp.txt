@@ -20,4 +20,81 @@ During Writing of MCP code we have to write code for 2 things
 
 But in LangChain we can write a code For Constructing MCP server
 
+######################################################## MCP Formal ###################################################################################
+# What are MCPs?
+MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems(LLM).
+Model Context Protocol (MCP) is an open Source protocol that standardizes how applications provide tools and context to LLMs.
+
+# Problem Before MCPs :
+Before MCP, every AI application needed custom integrations.
+For example, suppose you wanted your AI assistant to access:GitHub,Google Drive,Slack,PostgreSQL,Notion
+Without MCP: GitHub API, Slack API, PostgreSQL Driver, Notion SDK, Google Drive SDK
+Every tool required different: Authentication ,API calls ,Response format ,SDK
+This became difficult to maintain.
+
+With MCP
+Everything speaks one language.
+                  MCP Protocol
+          +----------------------+
+          |        LLM           |
+          +----------+-----------+
+                     |
+               MCP Client
+                     |
+    -----------------------------------
+    |         |         |             |
+ GitHub    Slack     Database     Google Drive
+ Server     Server      Server        Server
+
+The LLM only knows how to communicate using MCP.
+Every service implements an MCP server.
+
+# Benfits (why) ?
+(i). AI applications or agents:  Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e.g. local files, databases), tools (e.g. search engines, calculators) and workflows (e.g. specialized prompts)—enabling them to access key information and perform tasks.
+
+(ii). Standardized interface : Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect electronic devices, MCP provides a standardized way to connect AI applications to external systems.
+
+(iii). Developers: MCP reduces development time and complexity when building, or integrating with, an AI application or agent.
+
+(iv). End-users: MCP results in more capable AI applications or agents which can access your data and take actions on your behalf when necessary.
+
+### Main Components of MCP :
+There are three important parts.
+
+1. MCP Host
+This is the application where the AI runs.
+The AI application that coordinates and manages one or multiple MCP clients
+Examples: ChatGPT Desktop , Claude Desktop , VS Code AI Extension , Cursor IDE ,Your own LangGraph application
+  User
+   │
+   ▼
+MCP Host
+
+2. MCP Client
+The client lives inside the host.
+Its job is to communicate with MCP servers.
+A component that maintains a connection to an MCP server and obtains context from an MCP server for the MCP host to us
+
+ Host
+  │
+  ▼
+MCP Client
+Think of it as an API client.
+
+3. MCP Server
+This exposes tools and resources.
+A program that provides context to MCP clients
+
+Examples:
+GitHub MCP Server
+Slack MCP Server
+
+ GitHub
+   ▲
+   │
+MCP Server
+
+
+
+
 
