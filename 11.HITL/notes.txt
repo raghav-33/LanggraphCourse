@@ -19,7 +19,7 @@ HITL ensures:
 Common HITL Patterns:
 (i)  Action Approval Pattern (Approve / Reject Before Execution).
 (ii) Output Review / Edit Pattern.
-(iii)Ambiguity Clarification Pattern.
+(iii)Ambiguity Clarification Pattern. (eg : transfer chat to Human Agent)
 (iv) Escalation Pattern. 
 
 How Implemented ?
