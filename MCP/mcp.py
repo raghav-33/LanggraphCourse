@@ -7,6 +7,8 @@ With MCP Client and write code of that tools in Mcp servers.
 
 (iii) Why Using Async code : because library we are going to use for MCPs (i.e : Fastmcp) is Work with Async code only.
 
+if we want to make langgraph code asynch we have to async their nodes .
+
 '''
 ################################## Import ######################################################################
 from langgraph.graph import StateGraph,START,END
@@ -48,19 +50,18 @@ class ChatState(TypedDict):
 
 
 async def build_graph():
-      
     # NOTE : write below 2 lines of code after creating MCP client here
     tools = await client.get_tools() # Fetch all tools from mcp server
     llm_with_tools = llm.bind_tools(tools) # Binding tool with llm
     
     # Nodes
-    async def chat_node(state: ChatState):
+    async def chat_node(state: ChatState): #if we want to make langgraph code asynch we have to async their nodes .
         messages = state['messages']
-        response = llm_with_tools.ainvoke(messages)
+        response = llm_with_tools.ainvoke(messages) # .invoke() : not used , .ainvoke() : used (see 'a' before invoke)
         return {"messages" :[response]}
 
 
-    tool_node=ToolNode(tools) # Execute tool call
+    tool_node=ToolNode(tools) # Execute tool call , why toolnode not make async : it is Internally async
 
 
     # Defining graph and nodes
