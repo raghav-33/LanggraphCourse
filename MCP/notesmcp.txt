@@ -6,7 +6,7 @@ Problems of Tools
 (i)Our Manger want to integrate Chatbot With Github , so it can read Github repos and answer queries
 (ii)But we have 2 types of tool (i) prebuilt and (ii) Custom tools . for custom tool we have to write a code
 (iii)LangChain does not provide any prebuilt github integrate tool , so we have to write custom code which is very complex and integrate with api
-for this case , or code may break | fail at any time if api change or request limit exceed.
+for this case , or code may break | fail at any time if github changes its api from version 1.0 to 2.0  or request limit exceed.
 (iv) Basiclly probelm is any changes take place in server side (github tool) affect Client side (LLM)
 (iv) This is Biggest Probelem With Tools and MCP Resolve this Problems
 
