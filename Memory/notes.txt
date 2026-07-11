@@ -48,10 +48,10 @@ Three Types :
 (iii) Procedural Memory(Skills / Instructions) : How to do Things : remember How to do task.  | remembers procedures, workflows, and rules.
 
 How it Work ?
-Step 1 : Creation / update : In this we have to find out,is there anything which can become part of long term memory.(exist out of Conversation)
-Step 2 : Storage : Here Store Long term Memory Extract out from step 1 and add identifiers and metadata to it making it survive restart and crashes
+Step 1 : Creation / update : In this During conversation we have to decide/find out,is there anything which can become part of long term memory.(exist out of Conversation)
+Step 2 : Storage : Here Store Long term Memory Extract out from step 1 and add identifiers and metadata to it making it survive restart and crashes.
 step 3 : RetrivaL : In new Conversation , model sochta hai , mujhe yeh answer krne kai liye kisi type ki memory ki jarurt hai ?
-step 4 : Injection : we did'nt do LTM direct Interact with LLM    
+step 4 : Injection : we did'nt do LTM direct Interaction with LLM    
                      we basically LTM sai search krke STM mai laker aa tai hai fir context window ka part bnata hai then send to LLM
                      LTM-->Search-->STM-->Context-->LLM   
     NOTE : In Injection we basically Pull Out things from LTM and bring into STM.
@@ -61,7 +61,7 @@ Challeges ?
 (ii) Retrieving the right memory at the right time
 (iii) Orchestrating the entire system.
 
-
+############################################################################################################################################################################
 # Why Persistanc checkpointers are not Long Term Memory ?
 Long-term memory is meant to store useful knowledge for future conversations.
 
