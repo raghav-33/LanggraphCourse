@@ -34,7 +34,7 @@ so How we can Use it to implement memory ?
     (ii) Context Window Problem : if our conversations chat/messages become too large due to lots of messages , 
          while tokenizing  previous conversations messages at new query token size also become large and 
          eventually it cross context limit of llm (llm not able to process new query in this case).
-         Solution:(i) Trimming : decide send only n messages instead of entire.problem: May miss Context  : Solution -->  send remaining messages to another LLM to generate summary
+         Solution:(i) Trimming : decide/send only n messages instead of entire .problem: May miss Context ,context exist in messages which we did not send : Solution -->                          Summarization -> send remaining messages to another LLM to generate summary
     (iii) Short Term Memory is Thread Scoped (Different Conversations limited)
     NOTE: In chatGpt(LLM) in every Conversation(also known thread) Short term memory is Implemented
    
