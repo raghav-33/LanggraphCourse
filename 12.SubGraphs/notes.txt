@@ -4,7 +4,8 @@ what are Multi agent system?
 system where Multiple agent are link in graph through nodes and edges.
 
 What is Subgraph ?
-A Subgraph in Langraph Usually means Graphh that is embedded and executed as node inside another Graphh
+A Subgraph in Langraph Usually means Graphh that is embedded and executed as { node } inside another Graph.
+agar ham graph ki kisi node ko kisi graph sai replace krde , then it become graph inside graph that is subgraph , jo kisi node ki jagah par kisi graph mai use hota hai. 
 
 Why needed?
 User -> LLM -> Output
