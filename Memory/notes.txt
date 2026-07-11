@@ -95,3 +95,7 @@ Remembering preferences
 Remembering past projects
 Cross-session knowledge
 Agent learning/history.
+
+### Library 
+There are some libraries exist which say you make your entire focus on developing application , We will take care of LTM Memory in your application .
+libraries : LangMem , MemO , SuperMemory. 
