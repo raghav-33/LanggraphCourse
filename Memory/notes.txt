@@ -27,7 +27,7 @@ so How we can Use it to implement memory ?
 
 
 ✓ Short Term Memory
-    Also Known as Conversation Buffer
+    Messages list we implement above , Also Known as Conversation Buffer
     How Implemented ? y = fθ(concation(x1, x2....xn)) : Every chat is appending with previous messages
     Drawback: 
     (i)  But if refresh page/ code reset/ start new Conversation memory of previous Conversation is vanish --> Solution : use persistance --> this is SHORT TERM MEMORY is Fragile.
