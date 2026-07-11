@@ -20,7 +20,10 @@ ThereFore Fact is Concluded : LLM's do not have any intrinsic Memory.
     LLM's use its parameter to knowledge answer, people assume but newly discovered:
  ✓ In Context Learning :In-context learning is an emergent ability that allows an LLM to use information and patterns present in the prompt itself,
                      in addition to its trained parametric knowledge, to generate an answer.
+
+so How we can Use it to implement memory ?
     y = fθ(concation(x1, x2....xn)) // internally it work as Memory , not Stateless , but if refresh memory vanish --> this is SHORT TERM MEMORY.
+    that is sending messages append in message list in prompt , by using context learning , LLM answer previous conversations.
 
 
 ✓ Short Term Memory
