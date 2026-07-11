@@ -43,9 +43,9 @@ so How we can Use it to implement memory ?
 ✓ Long Term Memory
 memory which exist out of single conversation for long term of time.
 Three Types :
-(i) Episodic Memory : What Happend : remeber/store What happend in past
-(ii) Semantic Memory : What is True : made up of facts about user , system .
-(iii) Procedural Memory : How to do Things : remember How to do task. 
+(i) Episodic Memory(Experinces) : What Happend : remeber/store What happend in past. | Episodic memory stores past interactions and experiences.
+(ii) Semantic Memory(facts) : What is True : made up of facts about user , system . | stores facts, knowledge, and preferences about the user or the world.
+(iii) Procedural Memory(Skills / Instructions) : How to do Things : remember How to do task.  | remembers procedures, workflows, and rules.
 
 How it Work ?
 Step 1 : Creation / update : In this we have to find out,is there anything which can become part of long term memory.(exist out of Conversation)
@@ -60,3 +60,38 @@ Challeges ?
 (i) Deciding what is worth remembering
 (ii) Retrieving the right memory at the right time
 (iii) Orchestrating the entire system.
+
+
+# Why Persistanc checkpointers are not Long Term Memory ?
+Long-term memory is meant to store useful knowledge for future conversations.
+
+Example:
+User prefers C++ for DSA questions.
+User is building a RAG project with LangGraph.
+User uses Groq API.
+These facts should be available weeks later in a completely new conversation.
+
+A checkpointer does not decide what is important knowledge. It simply records the entire runtime state.
+
+Rule to Remember
+Checkpointer = "What was happening in this conversation?"
+Long-Term Memory = "What should I remember about the user or past experiences for the future?
+
+Why Confuse happen ?
+if your graph crashes and you restart it, the checkpointer can restore the graph state from disk. That feels like “memory”, but its purpose is different.
+
+When use which ?
+
+** Persistence / Checkpointing
+Crash recovery
+Streaming and interrupts
+Human-in-the-loop approval
+Time travel / debugging
+Resume execution
+
+** Long-Term Memory
+User personalization
+Remembering preferences
+Remembering past projects
+Cross-session knowledge
+Agent learning/history.
